@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import Dashboard from "../view/dashboard.vue";
 import TableStudent from "../view/tableStudent.vue";
+import path from "path";
 
 // 1. ĐỊNH NGHĨA MẢNG TUYẾN ĐƯỜNG TRƯỚC
 const routes = [
@@ -16,6 +17,26 @@ const routes = [
     path: "/table-student",
     name: "students",
     component: TableStudent,
+  },
+  {
+    path: "/time-lock-sign",
+    name: "timeLockSign",
+    component: () => import("../view/timeLockSign.vue"),
+  },
+  {
+    path: "/ClassSchedule",
+    name: "ClassSchedule",
+    component: () => import("../view/ClassSchedule.vue"),
+  },
+  {
+    path: "/classAchievement",
+    name: "classAchievement",
+    component: () => import("../view/classAchievement.vue"),
+  },
+  {
+    path: "/studentAchievement",
+    name: "studentAchievement",
+    component: () => import("../view/studentAchievement.vue"),
   },
 ];
 
