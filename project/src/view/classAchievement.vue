@@ -7,9 +7,11 @@
       <RouterLink
         v-for="(item, index) in classes"
         :key="index"
-        to="/home"
+        :to="{
+          name: 'studentAchievement',
+          params: { className: item.name },
+        }"
         class="bg-blue-500 p-6 text-white flex items-center justify-center rounded-[5px] hover:scaler-105 hover:shadow-lg transition-all duration-200 hover:translate-y-[-5px] shadow-md text-[20px]"
-        @click="gotoStudentAchievement"
       >
         {{ item.name }}
       </RouterLink>
@@ -30,9 +32,9 @@ const classes = ref([
   { name: "Lớp G" },
   { name: "Lớp H" },
 ]);
-const router = useRouter();
-const gotoStudentAchievement = () => {
-  // 3. Thực hiện điều hướng
-  router.push("/studentAchievement");
-};
+// const router = useRouter();
+// const gotoStudentAchievement = () => {
+//   // 3. Thực hiện điều hướng
+//   router.push("/studentAchievement");
+// };
 </script>

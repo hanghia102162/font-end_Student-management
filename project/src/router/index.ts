@@ -24,7 +24,7 @@ const routes = [
     component: () => import("../view/timeLockSign.vue"),
   },
   {
-    path: "/ClassSchedule",
+    path: "/ClassSchedule/:className",
     name: "ClassSchedule",
     component: () => import("../view/ClassSchedule.vue"),
   },
@@ -34,9 +34,14 @@ const routes = [
     component: () => import("../view/classAchievement.vue"),
   },
   {
-    path: "/studentAchievement",
+    path: "/studentAchievement/:className",
     name: "studentAchievement",
     component: () => import("../view/studentAchievement.vue"),
+  },
+  {
+    path: "/scorecardDetails/:id",
+    name: "scorecardDetails",
+    component: () => import("../view/scorecardDetails.vue"),
   },
 ];
 

@@ -5,6 +5,25 @@
         Danh sách các học sinh của lớp
       </h2>
       <div class="flex justify-center items-center">
+        <button
+          class="ml-3 p-2 bg-blue-500 text-white rounded hover:scale-105 hover:-translate-y-0.5 transition-transform cursor-pointer"
+          @click="openModal"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"
+            />
+          </svg>
+        </button>
         <input
           type="text"
           placeholder="Tìm kiếm sinh viên..."
@@ -69,7 +88,61 @@
       </tbody>
     </table>
   </div>
+  <!-- ----------------------------------------------- -->
+  <!-- MODAL -->
+  <div
+    v-if="ShowModal"
+    @click.self="closeModal"
+    class="fixed inset-0 z-[999] flex items-center justify-center bg-black/40"
+  >
+    <div class="bg-white w-[500px] rounded-xl shadow-lg p-6 animate-fadeIn">
+      <!-- Header -->
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-semibold">Bộ lọc học sinh</h3>
+        <button @click="closeModal" class="text-gray-500 hover:text-red-500">
+          ✕
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div class="space-y-4">
+        <input
+          type="text"
+          placeholder="Họ tên"
+          class="w-full border rounded px-3 py-2"
+        />
+
+        <select class="w-full border rounded px-3 py-2">
+          <option value="">Chọn lớp</option>
+          <option>CNTT1</option>
+          <option>CNTT2</option>
+        </select>
+
+        <select class="w-full border rounded px-3 py-2">
+          <option value="">Giới tính</option>
+          <option>Nam</option>
+          <option>Nữ</option>
+        </select>
+      </div>
+
+      <!-- Footer -->
+      <div class="flex justify-end gap-3 mt-6">
+        <button
+          @click="closeModal"
+          class="px-4 py-2 border rounded hover:bg-gray-100"
+        >
+          Hủy
+        </button>
+        <button
+          class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        >
+          Áp dụng
+        </button>
+      </div>
+    </div>
+  </div>
 </template>
+
 <script setup>
 import { ref } from "vue";
 const students = ref([
@@ -92,4 +165,11 @@ const students = ref([
     sex: "Nữ",
   },
 ]);
+const ShowModal = ref(false);
+const openModal = () => {
+  ShowModal.value = true;
+};
+const closeModal = () => {
+  ShowModal.value = false;
+};
 </script>
