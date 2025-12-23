@@ -14,7 +14,7 @@ const routes = [
   {
     // Đảm bảo bạn push tới path này (/students),
     // chứ không phải /table-student như bạn đã thử push trước đó
-    path: "/table-student",
+    path: "/table-student/:className",
     name: "students",
     component: TableStudent,
   },
@@ -42,6 +42,11 @@ const routes = [
     path: "/scorecardDetails/:id",
     name: "scorecardDetails",
     component: () => import("../view/scorecardDetails.vue"),
+  },
+  {
+    path: "/studentClass",
+    name: "studentClass",
+    component: () => import("../view/studentClass.vue"),
   },
 ];
 

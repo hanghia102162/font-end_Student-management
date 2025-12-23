@@ -2,7 +2,7 @@
   <div class="ml-[300px] p-6 z-[100]">
     <div class="flex items-center justify-between mb-[20px]">
       <h2 class="text-[35px] justify-center font-medium my-[35px]">
-        Danh sách các học sinh của lớp
+        Danh sách các học sinh của lớp {{ className }}
       </h2>
       <div class="flex justify-center items-center">
         <button
@@ -74,7 +74,8 @@
           <td class="border px-4 py-2">{{ student.sex }}</td>
           <td class="border px-4 py-2">
             <button
-              class="bg-blue-500 text-white px-2 py-1 rounded mr-2 cursor-pointer"
+              class="bg-blue-500 text-white px-2 py-1 rounded mr-2 cursor-pointer hover:bg-red-600 hover:translate-y-[-1px] transition-all duration-200"
+              @click="openModal2"
             >
               Sửa
             </button>
@@ -141,6 +142,71 @@
       </div>
     </div>
   </div>
+  <!-- Model2 -->
+  <div
+    v-if="ShowModal2"
+    @click.self="closeModal2"
+    class="fixed inset-0 z-[999] flex items-center justify-center bg-black/40"
+  >
+    <div class="bg-white w-[500px] rounded-xl shadow-lg p-6 animate-fadeIn">
+      <!-- Header -->
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-semibold">Chỉnh sửa thông tin học sinh</h3>
+        <button @click="closeModal2" class="text-gray-500 hover:text-red-500">
+          ✕
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div class="space-y-4">
+        <input
+          type="text"
+          placeholder="Họ tên"
+          class="w-full border rounded px-3 py-2"
+        />
+        <input
+          type="text"
+          placeholder="Lớp"
+          class="w-full border rounded px-3 py-2"
+        />
+        <input
+          type="text"
+          placeholder="Quê quán"
+          class="w-full border rounded px-3 py-2"
+        />
+        <input
+          type="text"
+          placeholder="Thông tin liên lạc"
+          class="w-full border rounded px-3 py-2"
+        />
+        <input
+          type="text"
+          placeholder="Ngày sinh"
+          class="w-full border rounded px-3 py-2"
+        />
+        <input
+          type="text"
+          placeholder="Giới tính"
+          class="w-full border rounded px-3 py-2"
+        />
+      </div>
+
+      <!-- Footer -->
+      <div class="flex justify-end gap-3 mt-6">
+        <button
+          @click="closeModal2"
+          class="px-4 py-2 border rounded hover:bg-gray-100"
+        >
+          Hủy
+        </button>
+        <button
+          class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        >
+          Lưu
+        </button>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -172,4 +238,16 @@ const openModal = () => {
 const closeModal = () => {
   ShowModal.value = false;
 };
+// ===========================================
+const ShowModal2 = ref(false);
+const openModal2 = () => {
+  ShowModal2.value = true;
+};
+const closeModal2 = () => {
+  ShowModal2.value = false;
+};
+//==========================================
+import { useRoute } from "vue-router";
+const route = useRoute();
+const className = route.params.className;
 </script>

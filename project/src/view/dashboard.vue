@@ -47,7 +47,7 @@
       </nav>
       <nav
         class="bg-[#f3f4f6] cursor-pointer p-6 flex items-center justify-center gap-2 rounded-[15px] hover:-translate-y-2 hover:shadow-lg transition-all duration-300"
-        @click="gototableStudent"
+        @click="gotoStudentClass"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -147,13 +147,16 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
-const gototableStudent = () => {
-  router.push("/table-student");
-};
+// const gototableStudent = () => {
+//   router.push("/table-student");
+// };
 const GototimeLockSign = () => {
   router.push("/time-lock-sign");
 };
 const gotoclassAchievement = () => {
   router.push("/classAchievement");
+};
+const gotoStudentClass = () => {
+  router.push("/studentClass");
 };
 </script>

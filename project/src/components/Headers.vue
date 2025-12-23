@@ -82,7 +82,7 @@
         </nav>
         <nav
           class="flex items-center gap-2 hover:cursor-pointer hover:scaler-105 hover:shadow-lg hover:text-white text-gray-500 transition-all duration-200 mt-[15px]"
-          @click="gototableStudent"
+          @click="gotostudentClass"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -174,5 +174,8 @@ const gotoclassAchievement = () => {
 };
 const gototableStudent = () => {
   router.push("/table-student");
+};
+const gotostudentClass = () => {
+  router.push("/studentClass");
 };
 </script>
